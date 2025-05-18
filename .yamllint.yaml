@@ -15,7 +15,7 @@ rules:
     allow-non-breakable-inline-mappings: false
   quoted-strings:
     quote-type: single
-    required: only-when-needed
+    required: true
   truthy:
     level: error
 
