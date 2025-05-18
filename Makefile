@@ -8,6 +8,7 @@ fmt: ## Run formatters
 	python -m black tests/
 
 lint: ## Run linters
+	python -m yamllint definitions/
 	python -m ruff check
 
 test: ## Run unit tests

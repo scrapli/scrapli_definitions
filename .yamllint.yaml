@@ -1,0 +1,23 @@
+---
+rules:
+  anchors: disable
+  braces:
+    forbid: true
+  brackets:
+    forbid: true
+  document-start:
+    level: error
+  empty-values: enable
+  line-length:
+    # because of regexes basically
+    max: 999
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: false
+  quoted-strings:
+    quote-type: single
+    required: only-when-needed
+  truthy:
+    level: error
+
+yaml-files:
+  - "*.yaml"
