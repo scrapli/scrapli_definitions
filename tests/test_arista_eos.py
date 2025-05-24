@@ -108,3 +108,15 @@ def test_mode_prompt_patterns(_, mode, prompt, d):
             re.search(pattern=m.prompt_pattern, string=prompt, flags=re.MULTILINE | re.IGNORECASE)
             is not None
         )
+
+
+@pytest.mark.parametrize(
+    argnames=("prompt",),
+    argvalues=(("some stuff in show tech output <redacted>",),),
+    ids=("dont-match-on-show-tech-output",),
+)
+def test_global_prompt_pattern_negative(prompt, d):
+    assert (
+        re.search(pattern=d.prompt_pattern, string=prompt, flags=re.MULTILINE | re.IGNORECASE)
+        is None
+    )
