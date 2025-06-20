@@ -19,7 +19,7 @@ modes:
 failure_indicators:
   - '% Command incomplete.'
   - 'Invalid input:'
-  - "doesn't exist"
+  - 'doesn''t exist'
 on_open_instructions:
   - enter_mode:
       requested_mode: 'privileged_exec'

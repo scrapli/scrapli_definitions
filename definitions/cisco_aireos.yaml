@@ -17,7 +17,7 @@ modes:
           - send_input:
               input: 'exit'
 failure_indicators:
-  - "Incorrect Usage. Use the '?' or <TAB> key to list commands."
+  - 'Incorrect Usage. Use the ''?'' or <TAB> key to list commands.'
   - 'Incorrect input!'
 on_open_instructions:
   - send_input:

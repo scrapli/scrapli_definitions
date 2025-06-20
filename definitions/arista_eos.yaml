@@ -62,4 +62,4 @@ on_close_instructions:
       requested_mode: 'privileged_exec'
   - write:
       input: 'exit'
-ntc_templates_platform: arista_eos
+ntc_templates_platform: 'arista_eos'
