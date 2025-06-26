@@ -7,7 +7,7 @@ from schema import Definition
 
 @pytest.fixture(scope="function")
 def d(request: pytest.FixtureRequest) -> str:
-    platform_name = request.path.name.lstrip("test_").rstrip(".py")
+    platform_name = request.path.name.removeprefix("test_").removesuffix(".py")
     definition_name = Path(f"definitions/{platform_name}.yaml")
 
     return Definition(**yaml.safe_load(definition_name.read_text()))
