@@ -78,5 +78,7 @@ class Definition(BaseModel):
     failure_indicators: Optional[list[str]] = None
     on_open_instructions: Optional[list[Operation]] = None
     on_close_instructions: Optional[list[Operation]] = None
+    force_in_session_auth: Optional[bool] = None
+    bypass_in_session_auth: Optional[bool] = None
     ntc_templates_platform: Optional[str] = None
     genie_platform: Optional[str] = None

@@ -3,29 +3,30 @@ prompt_pattern: '^.*[>#$]\s?+$'
 default_mode: 'exec'
 modes:
   - name: 'exec'
-    prompt_pattern: '^\([\w. -]{1,31}\) >$'
+    prompt_pattern: '^[\w\.\-]+#\s*$$'
     accessible_modes:
       - name: 'configuration'
         instructions:
           - send_input:
-              input: 'config'
+              input: 'configure'
   - name: 'configuration'
-    prompt_pattern: '^\([\w. -]{1,31}\) config>$'
+    prompt_pattern: '^[\w\.\-]+\(config\)#\s*$'
     accessible_modes:
       - name: 'exec'
         instructions:
           - send_input:
               input: 'exit'
 failure_indicators:
-  - 'Incorrect Usage. Use the ''?'' or <TAB> key to list commands.'
-  - 'Incorrect input!'
+  - 'Error:'
 on_open_instructions:
+  - enter_mode:
+      requested_mode: 'configuration'
   - send_input:
-      input: 'config paging disable'
+      input: 'no terminal paging'
+  - enter_mode:
+      requested_mode: 'exec'
 on_close_instructions:
   - enter_mode:
       requested_mode: 'exec'
   - write:
-      input: 'logout'
-force_in_session_auth: true
-ntc_templates_platform: 'cisco_wlc_ssh'
+      input: 'exit'

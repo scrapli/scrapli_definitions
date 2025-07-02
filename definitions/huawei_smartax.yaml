@@ -1,16 +1,16 @@
 ---
-prompt_pattern: '^.*[>#$]\s?+$'
+prompt_pattern: '^.*[>#$%]\s?+$'
 default_mode: 'privileged_exec'
 modes:
   - name: 'exec'
-    prompt_pattern: '^[a-z0-9]{1,24}>\s*$'
+    prompt_pattern: '^\S{1,48}>\s?$'
     accessible_modes:
       - name: 'privileged_exec'
         instructions:
           - send_input:
-              input: 'enable force'
+              input: 'enable'
   - name: 'privileged_exec'
-    prompt_pattern: '^[a-z0-9]{1,24}#\s*$'
+    prompt_pattern: '^\S{1,48}#$'
     accessible_modes:
       - name: 'exec'
         instructions:
@@ -20,45 +20,42 @@ modes:
         instructions:
           - send_input:
               input: 'config'
-      - name: 'debug'
+      - name: 'diagnose'
         instructions:
           - send_input:
-              input: 'debug'
-      - name: 'ap_mode'
-        instructions:
-          - send_input:
-              input: 'ap-mode'
+              input: 'diagnose'
   - name: 'configuration'
-    prompt_pattern: '^[a-z0-9]{1,24}\(conf[a-z0-9\-]{0,24}\)#\s*$'
-    accessible_modes:
-      - name: 'privileged_exec'
-        instructions:
-          - send_input:
-              input: 'end'
-  - name: 'debug'
-    prompt_pattern: '^[a-z0-9]{1,24}\(debug\)#\s*$'
+    prompt_pattern: '^(.*)\(.*(config)\S*\)#$'
     accessible_modes:
       - name: 'privileged_exec'
         instructions:
           - send_input:
               input: 'quit'
-  - name: 'ap_mode'
-    prompt_pattern: '^[a-z0-9]{1,24}\(ap-mode\)#\s*$'
+  - name: 'diagnose'
+    prompt_pattern: '.*\(diagnose\)\%\%$'
     accessible_modes:
       - name: 'privileged_exec'
         instructions:
           - send_input:
               input: 'quit'
 failure_indicators:
-  - 'The command is'
-  - 'is invalid'
-  - 'must consist'
+  - '% Ambiguous command'
+  - '% Incomplete command'
+  - '% Invalid input detected'
+  - '% Unknown command'
+  - 'Error:'
 on_open_instructions:
   - enter_mode:
       requested_mode: 'privileged_exec'
+  - write:
+      input: 'undo smart'
+  - write:
+      input: 'scroll'
 on_close_instructions:
   - enter_mode:
       requested_mode: 'privileged_exec'
   - write:
-      input: 'exit'
-force_in_session_auth: true
+      input: 'quit'
+  - write:
+      input: 'y'
+ntc_templates_platform: 'huawei_smartax'
