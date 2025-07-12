@@ -4,6 +4,11 @@ import pytest
 
 PROMPTS = (
     (
+        "simple",
+        "bash",
+        "A:srl# ",
+    ),
+    (
         "simple-exec",
         "exec",
         "--{ running }--[  ]--\nA:srl#",
