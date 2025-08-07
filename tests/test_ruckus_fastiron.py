@@ -9,6 +9,11 @@ PROMPTS = (
         "ICX7150-24P Switch>",
     ),
     (
+        "with-parens",
+        "exec",
+        "ICX7150-24P Switch(DEV)>",
+    ),
+    (
         "ssh-prompt",
         "exec",
         "SSH@ICX7150-24P Switch>",
@@ -19,6 +24,11 @@ PROMPTS = (
         "ICX7150-24P Switch#",
     ),
     (
+        "with-parens",
+        "privileged_exec",
+        "ICX7150-24P Switch(DEV)#",
+    ),
+    (
         "ssh-prompt",
         "privileged_exec",
         "SSH@ICX7150-24P Switch#",
@@ -27,6 +37,11 @@ PROMPTS = (
         "simple",
         "configuration",
         "ICX7150-24P Switch(config)#",
+    ),
+    (
+        "with-parens",
+        "configuration",
+        "ICX7150-24P Switch(DEV)(config)#",
     ),
     (
         "ssh-prompt",
