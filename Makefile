@@ -10,7 +10,7 @@ fmt: ## Run formatters
 	gci write options/
 	golines --base-formatter="gofmt" -w options/
 
-lint: ## Run linters
+lint: fmt ## Run linters
 	python -m yamllint definitions/
 	python -m ruff check
 
