@@ -25,7 +25,7 @@ jobs:
           echo "GOLINES_VERSION=$GOLINES_VERSION" >> "$GITHUB_ENV"
 
       - name: set up python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
