@@ -1,7 +1,5 @@
 """tests.schema"""
 
-from typing import Optional
-
 from pydantic import BaseModel, model_validator
 
 
@@ -20,8 +18,8 @@ class SendInputOperation(BaseModel):
 class SendPromptedInputOperation(BaseModel):
     input: str
     response: str
-    prompt_exact: Optional[str] = None
-    prompt_pattern: Optional[str] = None
+    prompt_exact: str | None = None
+    prompt_pattern: str | None = None
 
     @model_validator(mode="after")
     def check_prompt_set(self):
@@ -32,10 +30,10 @@ class SendPromptedInputOperation(BaseModel):
 
 
 class Operation(BaseModel):
-    write: Optional[WriteOperation] = None
-    enter_mode: Optional[EnterMode] = None
-    send_input: Optional[SendInputOperation] = None
-    send_prompted_input: Optional[SendPromptedInputOperation] = None
+    write: WriteOperation | None = None
+    enter_mode: EnterMode | None = None
+    send_input: SendInputOperation | None = None
+    send_prompted_input: SendPromptedInputOperation | None = None
 
     @model_validator(mode="after")
     def check_operation_set(self):
@@ -58,10 +56,10 @@ class AccessibleMode(BaseModel):
 
 class Mode(BaseModel):
     name: str
-    prompt_exact: Optional[str] = None
-    prompt_pattern: Optional[str] = None
-    prompt_excludes: Optional[list[str]] = None
-    accessible_modes: Optional[list[AccessibleMode]] = None
+    prompt_exact: str | None = None
+    prompt_pattern: str | None = None
+    prompt_excludes: list[str] | None = None
+    accessible_modes: list[AccessibleMode] | None = None
 
     @model_validator(mode="after")
     def check_prompt_set(self):
@@ -75,10 +73,10 @@ class Definition(BaseModel):
     prompt_pattern: str
     default_mode: str
     modes: list[Mode]
-    failure_indicators: Optional[list[str]] = None
-    on_open_instructions: Optional[list[Operation]] = None
-    on_close_instructions: Optional[list[Operation]] = None
-    force_in_session_auth: Optional[bool] = None
-    bypass_in_session_auth: Optional[bool] = None
-    ntc_templates_platform: Optional[str] = None
-    genie_platform: Optional[str] = None
+    failure_indicators: list[str] | None = None
+    on_open_instructions: list[Operation] | None = None
+    on_close_instructions: list[Operation] | None = None
+    force_in_session_auth: bool | None = None
+    bypass_in_session_auth: bool | None = None
+    ntc_templates_platform: str | None = None
+    genie_platform: str | None = None
