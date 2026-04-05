@@ -30,11 +30,11 @@ modes:
           - send_input:
               input: 'end'
 failure_indicators:
-  - "Ambiguous command"
-  - "Command not found / Incomplete command. Use ? to list commands."
-  - "Invalid input."
-  - "Unrecognized command"
-  - "% Invalid input detected at '^' marker."
+  - 'Ambiguous command'
+  - 'Command not found / Incomplete command. Use ? to list commands.'
+  - 'Invalid input.'
+  - 'Unrecognized command'
+  - '% Invalid input detected at ''^'' marker.'
 on_open_instructions:
   - enter_mode:
       requested_mode: 'privileged_exec'
