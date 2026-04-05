@@ -27,7 +27,7 @@ modes:
     # The following pattern tries to prevent this from happening by using a regex negative
     # lookahead to exclude '[V***R***C**]' from the prompt pattern, but still match
     # a regular hostname.
-    prompt_pattern: '^(?!\[V\d{3}R\d{3}C\d{2,3}.*\])(?=(?:hrp_[a|m|s])?\[\~{0,1}\*{0,1}[a-z0-9.\-_@\/:]{1,64}\]$).*$'
+    prompt_pattern: '^(?!\[V\d{3}R\d{3}C\d{2,3}.*\])(?=(?:hrp_[a|m|s])?\[\~{0,1}\*{0,1}[a-z0-9.\-_@/:]{1,64}\]$).*$'
     accessible_modes:
       - name: 'privileged_exec'
         instructions:
