@@ -43,7 +43,11 @@ failure_indicators:
   - '% Incomplete command'
   - '% Invalid input detected'
   - '% Unknown command'
+  - '% Too many parameters'
+  - '% Parameter error'
   - 'Error:'
+  - 'Failure:'
+  - 'The required ONT does not exist'
 on_open_instructions:
   - enter_mode:
       requested_mode: 'privileged_exec'
