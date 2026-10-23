@@ -3,11 +3,11 @@ import re
 import pytest
 
 PROMPTS = (
-    # --- базовые режимы ---
+    # --- base modes ---
     ("exec", "exec", "eltex-mes> "),
     ("privileged_exec", "privileged_exec", "eltex-mes# "),
     ("configuration", "configuration", "eltex-mes(config)# "),
-    # --- подрежимы configuration ---
+    # --- configuration sub-modes ---
     ("config_if", "configuration", "eltex-mes(config-if)# "),
     ("config_vlan", "configuration", "eltex-mes(config-vlan)# "),
     ("config_erps", "configuration", "eltex-mes(config-erps)# "),
@@ -21,7 +21,7 @@ PROMPTS = (
     ("config_ip", "configuration", "eltex-mes(config-ip)# "),
     ("config_dhcp", "configuration", "eltex-mes(config-dhcp)# "),
     ("router_ospf_process", "configuration", "eltex-mes(router_ospf_process)# "),
-    # --- hostname с дефисом, uppercase ---
+    # --- hostname with dash, uppercase ---
     ("hostname_with_dash", "privileged_exec", "eltex-mes-test# "),
     ("uppercase", "privileged_exec", "ELTEX-MES# "),
 )
